@@ -1,7 +1,7 @@
 class RegistrationPage {
     constructor(page) {
         this.page = page;
-        this.regLink = page.locator("a[href='register.htm']");
+        this.regLink = page.locator('a[href*="register"]');
         this.firstnameField = page.locator("input[id='customer.firstName']");
         this.lastnameField = page.locator("input[id='customer.lastName']");
         this.addressField = page.locator("input[id='customer.address.street']");
@@ -32,11 +32,9 @@ class RegistrationPage {
         await this.zipcodeField.fill(zipc);
         await this.phonenumField.fill(phonen);
         await this.ssnField.fill(ssn);
-        await this.page.pause();
         await this.usernameField.fill(usern);
         await this.passwordField.fill(passw);
         await this.repeatpasswField.fill(repeatpassw);
-
         await this.regButton.click();
 
         await this.page.waitForLoadState('networkidle');

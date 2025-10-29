@@ -10,6 +10,10 @@ class LoginInCredentialsPage {
       await this.usernameField.fill(username);
       await this.passwordField.fill(password);
       await this.loginButton.click();
+      await this.page.waitForLoadState('networkidle');
+      await this.page.pause();
+      await this.page.screenshot({ path: 'afterLogin.png' });
+
     }
   }
   

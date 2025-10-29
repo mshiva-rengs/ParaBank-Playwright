@@ -3,7 +3,8 @@ const { LoginInCredentialsPage } = require('../../pages/LogInCredentialsPage');
 
 test('Sign Into my Online  Banking Profile', async ({ page }) => {
   await page.goto('https://parabank.parasoft.com/parabank/index.htm');
-  await expect(page).toHaveTitle(/ParaBank | Welcome | Online Banking/);
+  await expect(page).toHaveURL(/overview.htm/);
+  await expect(page.locator('h1.title')).toHaveText('Accounts Overview');
 
 
   const loginPage = new LoginInCredentialsPage(page);
@@ -19,7 +20,7 @@ test('Sign Into my Online  Banking using Invalid password', async ({ page }) => 
 
   const loginPage = new LoginInCredentialsPage(page);
   await loginPage.login('Mingas', 'Tshepo@201');
-  await expect(page).toHaveTitle(/ParaBank | Accounts Overview/);
+  await expect(page.locator('.error')).toHaveText('The username and password could not be verified.');
 
 
 });
