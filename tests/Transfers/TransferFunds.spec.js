@@ -3,7 +3,7 @@ const { TransferFundsPage } = require('../../pages/TransferFundsPage');
 const { LoginInCredentialsPage } = require('../../pages/LogInCredentialsPage');
 
 
-test.only('Transfer 100.00', async ({ page }) => {
+test('Transfer 100.00', async ({ page }) => {
     await page.goto('https://parabank.parasoft.com/parabank/index.htm');
     await expect(page).toHaveTitle(/ParaBank | Register for Free Online Account Access/);
 
